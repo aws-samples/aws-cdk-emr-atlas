@@ -1,0 +1,27 @@
+emr:
+  account: 321453748867
+  region: cn-north-1
+  construct_id: cdk-emr-cluster-stack
+  sns:
+    topic: sdk-notif
+    emails:
+      - jiatin@amazon.com
+    iam_role_name:
+  vpc:
+    use_existing: true  # need to update the code when it's No
+  emr_cluster:
+    domain_name: cdk-created-cluster
+    relase_label: 'emr-6.2.0'
+    service_role_name: emr_service_role_cn
+    s3_log_bucket: jiatin-cdk-emr-log-bucket
+    s3_script_bucket: jiatin-cdk-emr-script-bucket
+    instance_profile_name: emrJobFlowProfile_
+    step_file_bucket_name: amazon-jiatin-public-script-bucket
+    step_script_file_name: apache-atlas-emr.sh
+  ec2:
+    # launch an instance in the vpc public subnet, remember to enable public ip assignment before running the cdk
+    master_instance_type: r4.xlarge
+    slave_instance_type: r4.xlarge
+    key_pair: emr-key-pair
+    market: ON_DEMAND
+
