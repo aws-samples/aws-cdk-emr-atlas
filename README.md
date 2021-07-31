@@ -1,58 +1,46 @@
+# aws-emr-cdk
 
-# Welcome to your CDK Python project.
+A CDK stack to deploy Amazon EMR with Atlas.
 
-This is a blank project for Python development with CDK.
+# What does the code do?
+1. Creates an AWS EMR cluster within a new VPC.
+2. Creates an IAM service role for the EMR cluster to read scripts from s3 bucket.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+# How to use the code?
+## Install AWS CDK
+Please refer to the following the [link](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)
 
-To manually create a virtualenv on MacOS and Linux:
+## Initialize the CDK home directory
+    mkdir aws_emr_cdk && cd aws_emr_cdk
+    cdk init --language python
 
-```
-$ python3 -m venv .venv
-```
+## Activate the virtualenv and install dependencies
+    source .env/bin/activate
+    pip install -r requirements.txt
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+## Change the configurations
+Update the configurations in the app-config.yml file.
 
-```
-$ source .venv/bin/activate
-```
+Before deploy, here is something you need to know:
 
-If you are a Windows platform, you would activate the virtualenv like this:
+1. You need a key pair config to EC2, which config in app-config.yaml file as emr->ec2->key_pair
+2. The IAM role and job flow role for EMR service, will be created automatically.
+3. A VPC with public subnet will be created automatically.
 
-```
-% .venv\Scripts\activate.bat
-```
+## Now let's deploy!
+    cdk synth  # To review the cloudformation template
+    cdk diff  # To review the change set
+    cdk deploy  # To deploy the stack
 
-Once the virtualenv is activated, you can install the required dependencies.
+## Test EMR
+After you deploy the stack, you could find a EMR cluster in the console, try to connect the master node in terminal 
+to run a job, and test other services on it, or add a step on the console to test Hadoop and Spark.
 
-```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+## Run a job on EMR cluster
+# Additional Resources:
+1. AWS Best Practice: [link](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html)
+2. Resizing a cluster: [link](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-manage-resize.html)
+3. Submit a job on console: [link](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-add-steps-console.html)
+4. Submit Hadoop jobs interactively: [link](https://docs.aws.amazon.com/emr/latest/ManagementGuide/interactive-jobs.html)
+5. You can terminate a EMR cluster by console/CLI/APIA: [link](https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminateJobFlow.html)
