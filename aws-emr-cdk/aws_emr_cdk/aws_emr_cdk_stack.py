@@ -134,6 +134,7 @@ class AwsEmrCdkStack(core.Stack):
             log_uri=f"s3://{conf_map['emr_cluster']['s3_log_bucket']}/{core.Aws.REGION}/elasticmapreduce/",
             release_label=conf_map['emr_cluster']['relase_label'],
             visible_to_all_users=True, # False to True 6.25 3:40
+            ebs_root_volume_size=50,
             # the job to be done
             steps=[
                 emr.CfnCluster.StepConfigProperty(
