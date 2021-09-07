@@ -1,11 +1,11 @@
 emr:
-  account: 321453748867
+  account: xxxxxxxxxxxx
   region: cn-north-1
   construct_id: cdk-emr-cluster-stack
   sns:
     topic: sdk-notif
     emails:
-      - jiatin@amazon.com
+      - xxx@xxx.com
     iam_role_name:
   vpc:
     use_existing: true  # need to update the code when it's No
@@ -13,8 +13,8 @@ emr:
     domain_name: cdk-created-cluster
     relase_label: 'emr-6.2.0'
     service_role_name: emr_service_role_cn
-    s3_log_bucket: jiatin-cdk-emr-log-bucket
-    s3_script_bucket: jiatin-cdk-emr-script-bucket
+    s3_log_bucket: cdk-emr-log-bucket
+    s3_script_bucket: cdk-emr-script-bucket
     instance_profile_name: emrJobFlowProfile_
     step_file_bucket_name: amazon-jiatin-public-script-bucket
     step_script_file_name: apache-atlas-emr.sh
