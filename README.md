@@ -24,9 +24,10 @@ Update the configurations in the app-config.yml file.
 
 Before deploy, here is something you need to know:
 
-1. You need a key pair config to EC2, which config in app-config.yaml file as emr->ec2->key_pair
-2. The IAM role and job flow role for EMR service, will be created automatically.
-3. A VPC with public subnet will be created automatically.
+1. You need a key pair config to EC2, which config in app-config.yaml file as emr->ec2->key_pair.
+2. You need to create two S3 bucket, and config it in app-config.yaml for s3_log_bucket and s3_script_bucket.
+3. The IAM role and job flow role for EMR service, will be created automatically.
+4. A VPC with public subnet will be created automatically.
 
 ## Now let's deploy!
     cdk synth  # To review the cloudformation template
