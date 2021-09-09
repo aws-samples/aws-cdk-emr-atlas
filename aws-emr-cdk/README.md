@@ -22,7 +22,8 @@ Please refer to the following the [link](https://docs.aws.amazon.com/cli/latest/
     cd aws-cdk-emr-atlas/aws-emr-cdk/
 
 ## Activate the virtualenv and install dependencies
-    source .env/bin/activate
+    python3 -m venv .venv
+    source .venv/bin/activate
     pip install -r requirements.txt
     pip3 install PyYAML
     pip3 install aws_cdk.core
@@ -37,7 +38,7 @@ Before deploy, here is something you need to know:
 
 1. You need a key pair config to EC2, which config in app-config.yaml file as emr->ec2->key_pair.
 2. You need to create two S3 bucket, and config it in app-config.yaml for s3_log_bucket and s3_script_bucket.
-3. Put file  aws-cdk-emr-atlas/aws-emr-cdk/apache-atlas-emr.sh  to your s3_script_bucket.
+3. Put file  aws-cdk-emr-atlas/aws-emr-cdk/apache-atlas-emr.sh to the bucket, which is the value of 's3_script_bucket' key in app-config.yaml.
 4. The IAM role and job flow role for EMR service, will be created automatically.
 5. A VPC with public subnet will be created automatically.
 
