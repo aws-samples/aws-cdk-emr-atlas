@@ -140,7 +140,7 @@ class AwsEmrCdkStack(core.Stack):
                 emr.CfnCluster.StepConfigProperty(
                     hadoop_jar_step=emr.CfnCluster.HadoopJarStepConfigProperty(
                         jar="s3://cn-northwest-1.elasticmapreduce/libs/script-runner/script-runner.jar",
-                        args=[f"s3://{conf_map['emr_cluster']['step_file_bucket_name']}/{conf_map['emr_cluster']['step_script_file_name']}"
+                        args=[f"s3://{conf_map['emr_cluster']['s3_script_bucket']}/{conf_map['emr_cluster']['step_script_file_name']}"
                         ],
                     ),
                     name="setup_atlas",
