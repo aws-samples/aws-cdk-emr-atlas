@@ -1,4 +1,4 @@
-# aws-emr-cdk
+# aws-emr-cdk-atlas
 
 A CDK stack to deploy Amazon EMR with Atlas.
 
