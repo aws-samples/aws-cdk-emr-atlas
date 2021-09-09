@@ -1,4 +1,4 @@
-# aws-emr-cdk
+# aws-emr-cdk-atlas
 
 A CDK stack to deploy Amazon EMR with Atlas.
 
@@ -11,9 +11,15 @@ A CDK stack to deploy Amazon EMR with Atlas.
 ## Install AWS CDK
 Please refer to the following the [link](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)
 
-## Initialize the CDK home directory
-    mkdir aws_emr_cdk && cd aws_emr_cdk
-    cdk init --language python
+## AWS cli config 
+Please refer to the following the [link](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+
+## Install git
+
+## Initialize the CDK directory
+    
+    git clone https://github.com/aws-samples/aws-cdk-emr-atlas
+    cd aws-cdk-emr-atlas/aws-emr-cdk/
 
 ## Activate the virtualenv and install dependencies
     source .env/bin/activate
