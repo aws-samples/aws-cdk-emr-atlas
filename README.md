@@ -18,6 +18,11 @@ Please refer to the following the [link](https://docs.aws.amazon.com/cdk/latest/
 ## Activate the virtualenv and install dependencies
     source .env/bin/activate
     pip install -r requirements.txt
+    pip3 install PyYAML
+    pip3 install aws_cdk.core
+    pip3 install aws_cdk.aws_emr
+    pip3 install aws_cdk.aws_ec2
+
 
 ## Change the configurations
 Update the configurations in the app-config.yml file.
